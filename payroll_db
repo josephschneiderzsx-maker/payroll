@@ -1,0 +1,1488 @@
+CREATE DATABASE payroll_db'
+USE `payroll_db`;
+
+/*Table structure for table `del_tbl_pret` */
+
+DROP TABLE IF EXISTS `del_tbl_pret`;
+
+CREATE TABLE `del_tbl_pret` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `dept` INT(11) DEFAULT NULL,
+  `userid_int` INT(11) DEFAULT NULL,
+  `userid_varchar` VARCHAR(255) DEFAULT NULL,
+  `pret` DECIMAL(24,2) DEFAULT '0.00',
+  `date_pret` DATE DEFAULT NULL,
+  `deduction` DECIMAL(24,2) DEFAULT '0.00',
+  `debut_deduct` DATE DEFAULT NULL,
+  `fin_deduct` DATE DEFAULT NULL,
+  `apply_deduction` INT(4) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB DEFAULT CHARSET=latin1;
+
+/*Table structure for table `del_tbl_salary_historized` */
+
+DROP TABLE IF EXISTS `del_tbl_salary_historized`;
+
+CREATE TABLE `del_tbl_salary_historized` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `userid_varchar` VARCHAR(30) DEFAULT NULL,
+  `userid_int` INT(11) DEFAULT NULL,
+  `hiredate` date DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `dept` varchar(255) DEFAULT NULL,
+  `designation` varchar(255) DEFAULT NULL,
+  `Rate_Work` decimal(24,2) DEFAULT '0.00',
+  `Rate_OT` decimal(24,2) DEFAULT '0.00',
+  `Rate_SALF` decimal(24,2) DEFAULT '0.00',
+  `rate_ot_factor` decimal(24,2) DEFAULT '0.00',
+  `rate_ot_holiday_factor` decimal(24,2) DEFAULT '0.00',
+  `work_hh_w` decimal(24,2) DEFAULT '0.00',
+  `ot_hh_w` decimal(24,2) DEFAULT '0.00',
+  `work_hh_h` decimal(24,2) DEFAULT '0.00',
+  `ot_hh_h` decimal(24,2) DEFAULT '0.00',
+  `hh_sunday` decimal(24,2) DEFAULT '0.00',
+  `work_hh_r` decimal(24,2) DEFAULT '0.00',
+  `ot_hh_r` decimal(24,2) DEFAULT '0.00',
+  `hh_offday` decimal(24,2) DEFAULT '0.00',
+  `work_hh_o` decimal(24,2) DEFAULT '0.00',
+  `ot_hh_o` decimal(24,2) DEFAULT '0.00',
+  `sal_work` decimal(24,2) DEFAULT '0.00',
+  `sal_ot` decimal(24,2) DEFAULT '0.00',
+  `sal_sum` decimal(24,2) DEFAULT '0.00',
+  `rate_ona` decimal(24,2) DEFAULT '0.00',
+  `rate_cfgdct` decimal(24,2) DEFAULT '0.00',
+  `rate_iris` decimal(24,2) DEFAULT '0.00',
+  `rate_iric` decimal(24,2) DEFAULT '0.00',
+  `tax_ona` decimal(24,2) DEFAULT '0.00',
+  `tax_cfgdct` decimal(24,2) DEFAULT '0.00',
+  `tax_iris` decimal(24,2) DEFAULT '0.00',
+  `tax_iric` decimal(24,2) DEFAULT '0.00',
+  `tax_sum` decimal(24,2) DEFAULT '0.00',
+  `deduction_pret` decimal(24,2) DEFAULT '0.00',
+  `sal_hr_worked` decimal(24,2) DEFAULT '0.00',
+  `sal_sunday` decimal(24,2) DEFAULT '0.00',
+  `sal_holiday` decimal(24,2) DEFAULT '0.00',
+  `sal_brut_reg` decimal(24,2) DEFAULT '0.00',
+  `sal_suppl` decimal(24,2) DEFAULT '0.00',
+  `sal_holiday_worked_suppl` decimal(24,2) DEFAULT '0.00',
+  `sal_holiday_suppl` decimal(24,2) DEFAULT '0.00',
+  `sal_restday_worked_suppl` decimal(24,2) DEFAULT '0.00',
+  `sal_restday_suppl` decimal(24,2) DEFAULT '0.00',
+  `incentive` decimal(24,2) DEFAULT '0.00',
+  `rappel` decimal(24,2) DEFAULT '0.00',
+  `day_cons` decimal(24,2) DEFAULT '0.00',
+  `rate_cons` decimal(24,2) DEFAULT '0.00',
+  `loan_deduction` decimal(24,2) DEFAULT '0.00',
+  `loan_deduction_bank` decimal(24,2) DEFAULT '0.00',
+  `other_loan_deduction` decimal(24,2) DEFAULT '0.00',
+  `dedeuct_cons` decimal(24,2) DEFAULT '0.00',
+  `other_deduct` decimal(24,2) DEFAULT '0.00',
+  `total_deduct` decimal(24,2) DEFAULT '0.00',
+  `sal_net` decimal(24,2) DEFAULT '0.00',
+  `bank_number` varchar(255) DEFAULT NULL,
+  `id_batch_payroll` int(11) DEFAULT NULL,
+  `generated_date` datetime DEFAULT NULL,
+  `historized_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1078 DEFAULT CHARSET=latin1;
+
+/*Table structure for table `del_tbl_salary_historized_temp` */
+
+DROP TABLE IF EXISTS `del_tbl_salary_historized_temp`;
+
+CREATE TABLE `del_tbl_salary_historized_temp` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid_varchar` varchar(30) DEFAULT NULL,
+  `userid_int` int(11) DEFAULT NULL,
+  `hiredate` date DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `dept` varchar(255) DEFAULT NULL,
+  `designation` varchar(255) DEFAULT NULL,
+  `Rate_Work` decimal(24,2) DEFAULT '0.00',
+  `Rate_OT` decimal(24,2) DEFAULT '0.00',
+  `Rate_SALF` decimal(24,2) DEFAULT '0.00',
+  `rate_ot_factor` decimal(24,2) DEFAULT '0.00',
+  `rate_ot_holiday_factor` decimal(24,2) DEFAULT '0.00',
+  `work_hh_w` decimal(24,2) DEFAULT '0.00',
+  `ot_hh_w` decimal(24,2) DEFAULT '0.00',
+  `work_hh_h` decimal(24,2) DEFAULT '0.00',
+  `ot_hh_h` decimal(24,2) DEFAULT '0.00',
+  `hh_sunday` decimal(24,2) DEFAULT '0.00',
+  `work_hh_r` decimal(24,2) DEFAULT '0.00',
+  `ot_hh_r` decimal(24,2) DEFAULT '0.00',
+  `hh_offday` decimal(24,2) DEFAULT '0.00',
+  `work_hh_o` decimal(24,2) DEFAULT '0.00',
+  `ot_hh_o` decimal(24,2) DEFAULT '0.00',
+  `sal_work` decimal(24,2) DEFAULT '0.00',
+  `sal_ot` decimal(24,2) DEFAULT '0.00',
+  `sal_sum` decimal(24,2) DEFAULT '0.00',
+  `rate_ona` decimal(24,2) DEFAULT '0.00',
+  `rate_cfgdct` decimal(24,2) DEFAULT '0.00',
+  `rate_iris` decimal(24,2) DEFAULT '0.00',
+  `rate_iric` decimal(24,2) DEFAULT '0.00',
+  `tax_ona` decimal(24,2) DEFAULT '0.00',
+  `tax_cfgdct` decimal(24,2) DEFAULT '0.00',
+  `tax_iris` decimal(24,2) DEFAULT '0.00',
+  `tax_iric` decimal(24,2) DEFAULT '0.00',
+  `tax_sum` decimal(24,2) DEFAULT '0.00',
+  `deduction_pret` decimal(24,2) DEFAULT '0.00',
+  `sal_hr_worked` decimal(24,2) DEFAULT '0.00',
+  `sal_sunday` decimal(24,2) DEFAULT '0.00',
+  `sal_holiday` decimal(24,2) DEFAULT '0.00',
+  `sal_brut_reg` decimal(24,2) DEFAULT '0.00',
+  `sal_suppl` decimal(24,2) DEFAULT '0.00',
+  `sal_holiday_worked_suppl` decimal(24,2) DEFAULT '0.00',
+  `sal_holiday_suppl` decimal(24,2) DEFAULT '0.00',
+  `sal_restday_worked_suppl` decimal(24,2) DEFAULT '0.00',
+  `sal_restday_suppl` decimal(24,2) DEFAULT '0.00',
+  `incentive` decimal(24,2) DEFAULT '0.00',
+  `rappel` decimal(24,2) DEFAULT '0.00',
+  `day_cons` decimal(24,2) DEFAULT '0.00',
+  `rate_cons` decimal(24,2) DEFAULT '0.00',
+  `loan_deduction` decimal(24,2) DEFAULT '0.00',
+  `loan_deduction_bank` decimal(24,2) DEFAULT '0.00',
+  `other_loan_deduction` decimal(24,2) DEFAULT '0.00',
+  `dedeuct_cons` decimal(24,2) DEFAULT '0.00',
+  `other_deduct` decimal(24,2) DEFAULT '0.00',
+  `total_deduct` decimal(24,2) DEFAULT '0.00',
+  `sal_net` decimal(24,2) DEFAULT '0.00',
+  `bank_number` varchar(255) DEFAULT NULL,
+  `id_batch_payroll` int(11) DEFAULT NULL,
+  `generated_date` datetime DEFAULT NULL,
+  `historized_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=299 DEFAULT CHARSET=latin1;
+
+/*Table structure for table `sec_apps` */
+
+DROP TABLE IF EXISTS `sec_apps`;
+
+CREATE TABLE `sec_apps` (
+  `app_name` varchar(128) NOT NULL,
+  `app_type` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`app_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Table structure for table `sec_groups` */
+
+DROP TABLE IF EXISTS `sec_groups`;
+
+CREATE TABLE `sec_groups` (
+  `group_id` int(11) NOT NULL AUTO_INCREMENT,
+  `description` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`group_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Table structure for table `sec_groups_apps` */
+
+DROP TABLE IF EXISTS `sec_groups_apps`;
+
+CREATE TABLE `sec_groups_apps` (
+  `group_id` int(11) NOT NULL,
+  `app_name` varchar(128) NOT NULL,
+  `priv_access` varchar(1) DEFAULT NULL,
+  `priv_insert` varchar(1) DEFAULT NULL,
+  `priv_delete` varchar(1) DEFAULT NULL,
+  `priv_update` varchar(1) DEFAULT NULL,
+  `priv_export` varchar(1) DEFAULT NULL,
+  `priv_print` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`group_id`,`app_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Table structure for table `sec_logged` */
+
+DROP TABLE IF EXISTS `sec_logged`;
+
+CREATE TABLE `sec_logged` (
+  `login` varchar(255) NOT NULL,
+  `date_login` varchar(128) DEFAULT NULL,
+  `sc_session` varchar(128) DEFAULT NULL,
+  `ip` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Table structure for table `sec_settings` */
+
+DROP TABLE IF EXISTS `sec_settings`;
+
+CREATE TABLE `sec_settings` (
+  `set_name` varchar(255) NOT NULL,
+  `set_value` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`set_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Table structure for table `sec_users` */
+
+DROP TABLE IF EXISTS `sec_users`;
+
+CREATE TABLE `sec_users` (
+  `login` varchar(255) NOT NULL,
+  `pswd` varchar(255) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `active` varchar(1) DEFAULT NULL,
+  `activation_code` varchar(32) DEFAULT NULL,
+  `priv_admin` varchar(1) DEFAULT NULL,
+  `mfa` varchar(255) DEFAULT NULL,
+  `picture` longblob,
+  `role` varchar(128) DEFAULT NULL,
+  `phone` varchar(64) DEFAULT NULL,
+  `pswd_last_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `mfa_last_updated` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`login`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Table structure for table `sec_users_groups` */
+
+DROP TABLE IF EXISTS `sec_users_groups`;
+
+CREATE TABLE `sec_users_groups` (
+  `login` varchar(255) NOT NULL,
+  `group_id` int(11) NOT NULL,
+  PRIMARY KEY (`login`,`group_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_attendance` */
+
+DROP TABLE IF EXISTS `tbl_attendance`;
+
+CREATE TABLE `tbl_attendance` (
+  `Auto_No` int(24) DEFAULT NULL,
+  `userid` int(30) DEFAULT NULL,
+  `Username` varchar(255) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `daytype` varchar(45) DEFAULT NULL,
+  `att_in` varchar(5) DEFAULT NULL,
+  `att_out` varchar(5) DEFAULT NULL,
+  `workhour` decimal(4,2) DEFAULT '0.00',
+  `othour` decimal(4,2) DEFAULT '0.00',
+  `workhour_hh` decimal(24,2) DEFAULT '0.00',
+  `othour_hh` decimal(24,2) DEFAULT '0.00',
+  `shorthour` decimal(4,2) DEFAULT '0.00',
+  `designation` varchar(100) DEFAULT NULL,
+  `path` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_attendance_payroll` */
+
+DROP TABLE IF EXISTS `tbl_attendance_payroll`;
+
+CREATE TABLE `tbl_attendance_payroll` (
+  `idattendance_sheet` int(30) NOT NULL AUTO_INCREMENT,
+  `userid` varchar(30) DEFAULT NULL,
+  `userid_int` int(11) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `daytype` varchar(45) DEFAULT NULL,
+  `leavetype` int(10) DEFAULT NULL,
+  `sche1` int(10) DEFAULT NULL,
+  `shiftNo` int(10) DEFAULT NULL,
+  `att_in` varchar(5) DEFAULT NULL,
+  `att_break` varchar(5) DEFAULT NULL,
+  `att_resume` varchar(5) DEFAULT NULL,
+  `att_out` varchar(5) DEFAULT NULL,
+  `att_ot` varchar(5) DEFAULT NULL,
+  `att_done` varchar(5) DEFAULT NULL,
+  `workhour` decimal(4,2) DEFAULT NULL,
+  `othour` decimal(4,2) DEFAULT NULL,
+  `workhour_hh` decimal(24,2) DEFAULT '0.00',
+  `othour_hh` decimal(24,2) DEFAULT '0.00',
+  `diffothour` decimal(4,2) DEFAULT NULL,
+  `shorthour` decimal(4,2) DEFAULT NULL,
+  `shorthour_hh` decimal(24,2) DEFAULT '0.00',
+  `SumWork` decimal(7,3) DEFAULT NULL,
+  `SumOT` decimal(7,3) DEFAULT NULL,
+  `SumDiffOT` decimal(7,3) DEFAULT NULL,
+  `SumShort` decimal(7,3) DEFAULT NULL,
+  `TotHr` decimal(7,3) DEFAULT NULL,
+  `TotWork` decimal(7,3) DEFAULT NULL,
+  `TotOT` decimal(7,3) DEFAULT NULL,
+  `TotDiff` decimal(7,3) DEFAULT NULL,
+  `TotDiffOT` decimal(7,3) DEFAULT NULL,
+  `BankHour` decimal(7,3) DEFAULT NULL,
+  `LeaveHour` decimal(7,3) DEFAULT NULL,
+  `in_s` decimal(4,2) DEFAULT NULL,
+  `break_s` decimal(4,2) DEFAULT NULL,
+  `resume_s` decimal(4,2) DEFAULT NULL,
+  `out_s` decimal(4,2) DEFAULT NULL,
+  `ot_s` decimal(4,2) DEFAULT NULL,
+  `done_s` decimal(4,2) DEFAULT NULL,
+  `daytype_c` int(10) DEFAULT NULL,
+  `leavetype_c` int(10) DEFAULT NULL,
+  `remark_c` int(10) DEFAULT NULL,
+  `sche1_c` int(10) DEFAULT NULL,
+  `in_c` int(10) DEFAULT NULL,
+  `break_c` int(10) DEFAULT NULL,
+  `resume_c` int(10) DEFAULT NULL,
+  `out_c` int(10) DEFAULT NULL,
+  `ot_c` int(10) DEFAULT NULL,
+  `done_c` int(10) DEFAULT NULL,
+  `workhour_c` int(10) DEFAULT NULL,
+  `othour_c` int(10) DEFAULT NULL,
+  `diffothour_c` int(10) DEFAULT NULL,
+  `shorthour_c` int(10) DEFAULT NULL,
+  `SumWork_c` int(10) DEFAULT NULL,
+  `SumOT_c` int(10) DEFAULT NULL,
+  `SumDiffOT_c` int(10) DEFAULT NULL,
+  `SumShort_c` int(10) DEFAULT NULL,
+  `TotHr_c` int(10) DEFAULT NULL,
+  `TotWork_c` int(10) DEFAULT NULL,
+  `TotOT_c` int(10) DEFAULT NULL,
+  `TotDiff_c` int(10) DEFAULT NULL,
+  `TotDiffOT_c` int(10) DEFAULT NULL,
+  `BankHour_c` int(10) DEFAULT NULL,
+  `LeaveHour_c` int(10) DEFAULT NULL,
+  `in_x` int(10) DEFAULT NULL,
+  `break_x` int(10) DEFAULT NULL,
+  `resume_x` int(10) DEFAULT NULL,
+  `out_x` int(10) DEFAULT NULL,
+  `ot_x` int(10) DEFAULT NULL,
+  `done_x` int(10) DEFAULT NULL,
+  `in_o` varchar(5) DEFAULT NULL,
+  `break_o` varchar(5) DEFAULT NULL,
+  `resume_o` varchar(5) DEFAULT NULL,
+  `out_o` varchar(5) DEFAULT NULL,
+  `ot_o` varchar(5) DEFAULT NULL,
+  `done_o` varchar(5) DEFAULT NULL,
+  `remark` int(10) DEFAULT NULL,
+  `hasmisspunch` tinyint(3) unsigned DEFAULT NULL,
+  `createdate` timestamp NULL DEFAULT NULL,
+  `lastupdate` timestamp NULL DEFAULT NULL,
+  `desc` varchar(200) DEFAULT NULL,
+  `desc_c` int(10) DEFAULT NULL,
+  PRIMARY KEY (`idattendance_sheet`)
+) ENGINE=InnoDB AUTO_INCREMENT=3473 DEFAULT CHARSET=utf8;
+
+/*Table structure for table `tbl_attendance_payroll_hist` */
+
+DROP TABLE IF EXISTS `tbl_attendance_payroll_hist`;
+
+CREATE TABLE `tbl_attendance_payroll_hist` (
+  `idattendance_sheet` int(30) NOT NULL AUTO_INCREMENT,
+  `userid` varchar(30) DEFAULT NULL,
+  `userid_int` int(11) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `daytype` varchar(45) DEFAULT NULL,
+  `leavetype` int(10) DEFAULT NULL,
+  `sche1` int(10) DEFAULT NULL,
+  `shiftNo` int(10) DEFAULT NULL,
+  `att_in` varchar(5) DEFAULT NULL,
+  `att_break` varchar(5) DEFAULT NULL,
+  `att_resume` varchar(5) DEFAULT NULL,
+  `att_out` varchar(5) DEFAULT NULL,
+  `att_ot` varchar(5) DEFAULT NULL,
+  `att_done` varchar(5) DEFAULT NULL,
+  `workhour` decimal(4,2) DEFAULT NULL,
+  `othour` decimal(4,2) DEFAULT NULL,
+  `workhour_hh` decimal(24,2) DEFAULT '0.00',
+  `othour_hh` decimal(24,2) DEFAULT '0.00',
+  `diffothour` decimal(4,2) DEFAULT NULL,
+  `shorthour` decimal(4,2) DEFAULT NULL,
+  `shorthour_hh` decimal(24,2) DEFAULT '0.00',
+  `SumWork` decimal(7,3) DEFAULT NULL,
+  `SumOT` decimal(7,3) DEFAULT NULL,
+  `SumDiffOT` decimal(7,3) DEFAULT NULL,
+  `SumShort` decimal(7,3) DEFAULT NULL,
+  `TotHr` decimal(7,3) DEFAULT NULL,
+  `TotWork` decimal(7,3) DEFAULT NULL,
+  `TotOT` decimal(7,3) DEFAULT NULL,
+  `TotDiff` decimal(7,3) DEFAULT NULL,
+  `TotDiffOT` decimal(7,3) DEFAULT NULL,
+  `BankHour` decimal(7,3) DEFAULT NULL,
+  `LeaveHour` decimal(7,3) DEFAULT NULL,
+  `in_s` decimal(4,2) DEFAULT NULL,
+  `break_s` decimal(4,2) DEFAULT NULL,
+  `resume_s` decimal(4,2) DEFAULT NULL,
+  `out_s` decimal(4,2) DEFAULT NULL,
+  `ot_s` decimal(4,2) DEFAULT NULL,
+  `done_s` decimal(4,2) DEFAULT NULL,
+  `daytype_c` int(10) DEFAULT NULL,
+  `leavetype_c` int(10) DEFAULT NULL,
+  `remark_c` int(10) DEFAULT NULL,
+  `sche1_c` int(10) DEFAULT NULL,
+  `in_c` int(10) DEFAULT NULL,
+  `break_c` int(10) DEFAULT NULL,
+  `resume_c` int(10) DEFAULT NULL,
+  `out_c` int(10) DEFAULT NULL,
+  `ot_c` int(10) DEFAULT NULL,
+  `done_c` int(10) DEFAULT NULL,
+  `workhour_c` int(10) DEFAULT NULL,
+  `othour_c` int(10) DEFAULT NULL,
+  `diffothour_c` int(10) DEFAULT NULL,
+  `shorthour_c` int(10) DEFAULT NULL,
+  `SumWork_c` int(10) DEFAULT NULL,
+  `SumOT_c` int(10) DEFAULT NULL,
+  `SumDiffOT_c` int(10) DEFAULT NULL,
+  `SumShort_c` int(10) DEFAULT NULL,
+  `TotHr_c` int(10) DEFAULT NULL,
+  `TotWork_c` int(10) DEFAULT NULL,
+  `TotOT_c` int(10) DEFAULT NULL,
+  `TotDiff_c` int(10) DEFAULT NULL,
+  `TotDiffOT_c` int(10) DEFAULT NULL,
+  `BankHour_c` int(10) DEFAULT NULL,
+  `LeaveHour_c` int(10) DEFAULT NULL,
+  `in_x` int(10) DEFAULT NULL,
+  `break_x` int(10) DEFAULT NULL,
+  `resume_x` int(10) DEFAULT NULL,
+  `out_x` int(10) DEFAULT NULL,
+  `ot_x` int(10) DEFAULT NULL,
+  `done_x` int(10) DEFAULT NULL,
+  `in_o` varchar(5) DEFAULT NULL,
+  `break_o` varchar(5) DEFAULT NULL,
+  `resume_o` varchar(5) DEFAULT NULL,
+  `out_o` varchar(5) DEFAULT NULL,
+  `ot_o` varchar(5) DEFAULT NULL,
+  `done_o` varchar(5) DEFAULT NULL,
+  `remark` int(10) DEFAULT NULL,
+  `hasmisspunch` tinyint(3) unsigned DEFAULT NULL,
+  `createdate` timestamp NULL DEFAULT NULL,
+  `lastupdate` timestamp NULL DEFAULT NULL,
+  `desc` varchar(200) DEFAULT NULL,
+  `desc_c` int(10) DEFAULT NULL,
+  PRIMARY KEY (`idattendance_sheet`)
+) ENGINE=InnoDB AUTO_INCREMENT=97556 DEFAULT CHARSET=utf8;
+
+/*Table structure for table `tbl_batch_boni` */
+
+DROP TABLE IF EXISTS `tbl_batch_boni`;
+
+CREATE TABLE `tbl_batch_boni` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `boni_code` varchar(255) DEFAULT NULL,
+  `boni_description` varchar(255) DEFAULT NULL,
+  `date_debut` date DEFAULT NULL,
+  `date_fin` date DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_batch_payroll` */
+
+DROP TABLE IF EXISTS `tbl_batch_payroll`;
+
+CREATE TABLE `tbl_batch_payroll` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `payroll_code` varchar(255) DEFAULT NULL,
+  `payroll_description` varchar(255) DEFAULT NULL,
+  `date_debut` date DEFAULT NULL,
+  `date_fin` date DEFAULT NULL,
+  `date_debut_sem1` date DEFAULT NULL,
+  `date_fin_sem1` date DEFAULT NULL,
+  `date_debut_sem2` date DEFAULT NULL,
+  `date_fin_sem2` date DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `posted_date` date DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_boni` */
+
+DROP TABLE IF EXISTS `tbl_boni`;
+
+CREATE TABLE `tbl_boni` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid_varchar` varchar(30) DEFAULT NULL,
+  `userid_int` int(11) DEFAULT NULL,
+  `hiredate` date DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `dept` varchar(255) DEFAULT NULL,
+  `designation` varchar(255) DEFAULT NULL,
+  `Rate_Work` decimal(24,2) DEFAULT '0.00',
+  `Rate_OT` decimal(24,2) DEFAULT '0.00',
+  `Rate_SALF` decimal(24,2) DEFAULT '0.00',
+  `payperiod` int(10) DEFAULT '1',
+  `probation_period` int(3) DEFAULT NULL,
+  `rate_ot_factor` decimal(24,2) DEFAULT '0.00',
+  `rate_ot_holiday_factor` decimal(24,2) DEFAULT '0.00',
+  `rate_ot_restday_factor` decimal(24,2) DEFAULT '0.00',
+  `work_hh_w` decimal(24,2) DEFAULT '0.00',
+  `ot_hh_w` decimal(24,2) DEFAULT '0.00',
+  `work_hh_h` decimal(24,2) DEFAULT '0.00',
+  `ot_hh_h` decimal(24,2) DEFAULT '0.00',
+  `hh_sunday` decimal(24,2) DEFAULT '0.00',
+  `work_hh_r` decimal(24,2) DEFAULT '0.00',
+  `ot_hh_r` decimal(24,2) DEFAULT '0.00',
+  `hh_offday` decimal(24,2) DEFAULT '0.00',
+  `work_hh_o` decimal(24,2) DEFAULT '0.00',
+  `ot_hh_o` decimal(24,2) DEFAULT '0.00',
+  `ot_hh` decimal(24,2) DEFAULT '0.00',
+  `ot_value` decimal(24,2) DEFAULT '0.00',
+  `short_hh` decimal(24,2) DEFAULT '0.00',
+  `short_value` decimal(24,2) DEFAULT '0.00',
+  `sal_work` decimal(24,2) DEFAULT '0.00',
+  `sal_ot` decimal(24,2) DEFAULT '0.00',
+  `sal_sum` decimal(24,2) DEFAULT '0.00',
+  `rate_ona` decimal(24,2) DEFAULT '0.00',
+  `rate_cass` decimal(24,2) DEFAULT '0.00',
+  `rate_cfgdct` decimal(24,2) DEFAULT '0.00',
+  `rate_fdu` decimal(24,2) DEFAULT '0.00',
+  `rate_iris` decimal(24,2) DEFAULT '0.00',
+  `rate_iric` decimal(24,2) DEFAULT '0.00',
+  `tax_ona` decimal(24,2) DEFAULT '0.00',
+  `tax_cass` decimal(24,2) DEFAULT '0.00',
+  `tax_cfgdct` decimal(24,2) DEFAULT '0.00',
+  `tax_fdu` decimal(24,2) DEFAULT '0.00',
+  `tax_iris` decimal(24,2) DEFAULT '0.00',
+  `tax_iric` decimal(24,2) DEFAULT '0.00',
+  `tax_sum` decimal(24,2) DEFAULT '0.00',
+  `deduction_pret` decimal(24,2) DEFAULT '0.00',
+  `sal_hr_worked` decimal(24,2) DEFAULT '0.00',
+  `sal_sunday` decimal(24,2) DEFAULT '0.00',
+  `sal_holiday` decimal(24,2) DEFAULT '0.00',
+  `sal_brut_reg` decimal(24,2) DEFAULT '0.00',
+  `sal_suppl` decimal(24,2) DEFAULT '0.00',
+  `sal_holiday_worked_suppl` decimal(24,2) DEFAULT '0.00',
+  `sal_holiday_suppl` decimal(24,2) DEFAULT '0.00',
+  `sal_restday_worked_suppl` decimal(24,2) DEFAULT '0.00',
+  `sal_restday_suppl` decimal(24,2) DEFAULT '0.00',
+  `incentive` decimal(24,2) DEFAULT '0.00',
+  `rappel` decimal(24,2) DEFAULT '0.00',
+  `day_cons` decimal(24,2) DEFAULT '0.00',
+  `rate_cons` decimal(24,2) DEFAULT '0.00',
+  `loan_deduction` decimal(24,2) DEFAULT '0.00',
+  `loan_description` varchar(255) DEFAULT NULL,
+  `loan_deduction_bank` decimal(24,2) DEFAULT '0.00',
+  `other_loan_deduction` decimal(24,2) DEFAULT '0.00',
+  `dedeuct_cons` decimal(24,2) DEFAULT '0.00',
+  `other_deduct` decimal(24,2) DEFAULT '0.00',
+  `health_insurance` decimal(24,2) DEFAULT '0.00',
+  `total_deduct` decimal(24,2) DEFAULT '0.00',
+  `sal_net` decimal(24,2) DEFAULT '0.00',
+  `bank_number` varchar(255) DEFAULT NULL,
+  `id_batch_payroll` int(11) DEFAULT NULL,
+  `pay_startdate` date DEFAULT NULL,
+  `pay_enddate` date DEFAULT NULL,
+  `hiring_duration` decimal(24,2) DEFAULT '0.00',
+  `sal_brut` decimal(24,2) DEFAULT '0.00',
+  `boni_value` decimal(24,2) DEFAULT '0.00',
+  `generated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `firedate` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1020 DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_boni_sum` */
+
+DROP TABLE IF EXISTS `tbl_boni_sum`;
+
+CREATE TABLE `tbl_boni_sum` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid_varchar` varchar(30) DEFAULT NULL,
+  `userid_int` int(11) DEFAULT NULL,
+  `hiredate` date DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `dept` varchar(255) DEFAULT NULL,
+  `designation` varchar(255) DEFAULT NULL,
+  `payperiod` int(10) DEFAULT '1',
+  `bank_number` varchar(255) DEFAULT NULL,
+  `pay_startdate` date DEFAULT NULL,
+  `pay_enddate` date DEFAULT NULL,
+  `boni_value` decimal(24,2) DEFAULT '0.00',
+  `rate_iric` decimal(24,2) DEFAULT '0.00',
+  `tax_iric` decimal(24,2) DEFAULT '0.00',
+  `boni_net` decimal(24,2) DEFAULT '0.00',
+  `generated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `firedate` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=353 DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_building` */
+
+DROP TABLE IF EXISTS `tbl_building`;
+
+CREATE TABLE `tbl_building` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `building_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_employee_actif` */
+
+DROP TABLE IF EXISTS `tbl_employee_actif`;
+
+CREATE TABLE `tbl_employee_actif` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid` varchar(30) DEFAULT NULL,
+  `Name` varchar(50) DEFAULT NULL,
+  `lastname` varchar(45) DEFAULT NULL,
+  `Gender` tinytext,
+  `designation` varchar(100) DEFAULT NULL,
+  `path` longtext,
+  `DOB` date DEFAULT NULL,
+  `IssueDate` date DEFAULT '2012-01-01',
+  `pay_rate` decimal(9,3) DEFAULT '0.000',
+  `pay_type` int(11) DEFAULT '0',
+  `expirydate` date DEFAULT '2029-12-31',
+  `bank_account` varchar(50) DEFAULT NULL,
+  `Address` varchar(200) DEFAULT NULL,
+  `Phone` varchar(20) DEFAULT NULL,
+  `Email` varchar(50) DEFAULT NULL,
+  `ic` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4556 DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_holiday` */
+
+DROP TABLE IF EXISTS `tbl_holiday`;
+
+CREATE TABLE `tbl_holiday` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid_int` int(11) DEFAULT NULL,
+  `daytype_count` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=47339 DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_incentive` */
+
+DROP TABLE IF EXISTS `tbl_incentive`;
+
+CREATE TABLE `tbl_incentive` (
+  `userid` int(11) DEFAULT NULL,
+  `userid_varchar` varchar(30) DEFAULT NULL,
+  `work_hh` decimal(24,2) DEFAULT '0.00',
+  `incentive` decimal(24,2) DEFAULT '0.00',
+  `departement` int(11) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_label_pdf` */
+
+DROP TABLE IF EXISTS `tbl_label_pdf`;
+
+CREATE TABLE `tbl_label_pdf` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `label` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_meal` */
+
+DROP TABLE IF EXISTS `tbl_meal`;
+
+CREATE TABLE `tbl_meal` (
+  `userid` int(11) DEFAULT NULL,
+  `day_cons` decimal(24,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_note_employee` */
+
+DROP TABLE IF EXISTS `tbl_note_employee`;
+
+CREATE TABLE `tbl_note_employee` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid_int` int(11) DEFAULT NULL,
+  `note_description` varchar(255) DEFAULT NULL,
+  `file_name` varchar(255) DEFAULT NULL,
+  `file_size` varchar(255) DEFAULT NULL,
+  `document` longblob,
+  `date_note` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=546 DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_payperiod` */
+
+DROP TABLE IF EXISTS `tbl_payperiod`;
+
+CREATE TABLE `tbl_payperiod` (
+  `int` int(11) NOT NULL AUTO_INCREMENT,
+  `period` varchar(255) DEFAULT NULL,
+  `value` int(11) DEFAULT NULL,
+  PRIMARY KEY (`int`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_phifa` */
+
+DROP TABLE IF EXISTS `tbl_phifa`;
+
+CREATE TABLE `tbl_phifa` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `payroll_date` date DEFAULT NULL,
+  `expiry_date` date DEFAULT NULL,
+  `renewal_date` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_prime` */
+
+DROP TABLE IF EXISTS `tbl_prime`;
+
+CREATE TABLE `tbl_prime` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `batch_payroll_ref` int(11) DEFAULT NULL,
+  `Department` int(11) DEFAULT NULL,
+  `Badge_No` int(11) DEFAULT NULL,
+  `prime` decimal(24,2) DEFAULT NULL,
+  `incentive` decimal(24,2) DEFAULT NULL,
+  `date_prime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `status` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_rate` */
+
+DROP TABLE IF EXISTS `tbl_rate`;
+
+CREATE TABLE `tbl_rate` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid_int` int(11) DEFAULT '0',
+  `userid_varchar` varchar(255) DEFAULT NULL,
+  `employee_name` varchar(255) DEFAULT NULL,
+  `ic` varchar(20) DEFAULT NULL,
+  `Address` varchar(200) DEFAULT NULL,
+  `Phone` varchar(20) DEFAULT NULL,
+  `Email` varchar(50) DEFAULT NULL,
+  `Gender` tinytext,
+  `DOB` date DEFAULT NULL,
+  `hiredate` date DEFAULT NULL,
+  `firedate` date DEFAULT NULL,
+  `inactif` int(5) DEFAULT '0',
+  `building` varchar(255) DEFAULT NULL,
+  `designation` varchar(255) DEFAULT NULL,
+  `dept` varchar(255) DEFAULT NULL,
+  `section` varchar(255) DEFAULT NULL,
+  `photo_name` varchar(255) DEFAULT NULL,
+  `photo_size` varchar(255) DEFAULT NULL,
+  `photo_file` longblob,
+  `imm_ona` varchar(255) DEFAULT NULL,
+  `no_compte` varchar(255) DEFAULT NULL,
+  `type_de_compte` varchar(255) DEFAULT NULL,
+  `payperiod` smallint(5) DEFAULT '1',
+  `probation_period` int(3) DEFAULT '0',
+  `rate_work` decimal(24,2) DEFAULT NULL,
+  `rate_ot` decimal(24,2) DEFAULT NULL,
+  `rate_ot_factor` decimal(24,2) DEFAULT '1.50',
+  `rate_ot_holiday_factor` decimal(24,2) DEFAULT '2.00',
+  `rate_ot_offday_factor` decimal(24,2) DEFAULT '2.00',
+  `rate_ot_restday_factor` decimal(24,2) DEFAULT '2.00',
+  `rate_day` decimal(24,2) DEFAULT '0.00',
+  `rate_fixed` decimal(24,2) DEFAULT '0.00',
+  `rate_restday` decimal(24,2) DEFAULT NULL,
+  `rate_offday` decimal(24,2) DEFAULT NULL,
+  `rate_commission1` decimal(24,2) DEFAULT NULL,
+  `Rate_Prime1` decimal(24,2) DEFAULT NULL,
+  `Rate_Omission1` decimal(24,2) DEFAULT NULL,
+  `rate_assmd` decimal(24,2) DEFAULT '0.00',
+  `rate_cass` decimal(24,2) DEFAULT '0.01',
+  `tax_cass` decimal(24,2) DEFAULT '0.00',
+  `rate_cfgdct` decimal(24,2) DEFAULT '0.01',
+  `tax_cfgdct` decimal(24,2) DEFAULT '0.00',
+  `rate_ona` decimal(24,2) DEFAULT '0.06',
+  `tax_ona` decimal(24,2) DEFAULT '0.00',
+  `rate_fdu` decimal(24,2) DEFAULT '0.01',
+  `tax_fdu` decimal(24,2) DEFAULT '0.00',
+  `rate_iris` decimal(24,2) DEFAULT '0.10',
+  `rate_iric` decimal(24,2) DEFAULT '0.10',
+  `rate_cons` decimal(24,2) DEFAULT '50.00',
+  `day_cons` decimal(24,2) DEFAULT '0.00',
+  `revenu_net` decimal(24,2) DEFAULT '0.00',
+  `incentive` decimal(24,2) DEFAULT '0.00',
+  `incentive_desc` varchar(255) DEFAULT NULL,
+  `incentive_startdate` date DEFAULT NULL,
+  `incentive_enddate` date DEFAULT NULL,
+  `apply_incentive` int(4) DEFAULT '0',
+  `rappel` decimal(24,2) DEFAULT '0.00',
+  `rappel_desc` varchar(255) DEFAULT NULL,
+  `rappel_startdate` date DEFAULT NULL,
+  `rappel_enddate` date DEFAULT NULL,
+  `apply_rappel` int(4) DEFAULT '0',
+  `extra_insurance` decimal(24,2) DEFAULT '0.00',
+  `extra_insdesc` varchar(255) DEFAULT NULL,
+  `apply_extra_ins` int(4) DEFAULT '0',
+  `other_deduct` decimal(24,2) DEFAULT '0.00',
+  `other_deduct_desc` varchar(255) DEFAULT NULL,
+  `loan` decimal(24,2) DEFAULT '0.00',
+  `date_loan` date DEFAULT NULL,
+  `payment` decimal(24,2) DEFAULT '0.00',
+  `date_payment` date DEFAULT NULL,
+  `payment_receipt` varchar(255) DEFAULT NULL,
+  `adjustment` decimal(24,2) DEFAULT '0.00',
+  `date_adjustment` date DEFAULT NULL,
+  `adjustment_receipt` varchar(255) DEFAULT NULL,
+  `loan_deduction` decimal(24,2) DEFAULT '0.00',
+  `loan_description` varchar(255) DEFAULT NULL,
+  `loan_start_deduct` date DEFAULT NULL,
+  `loan_monthlypayment` int(11) DEFAULT '0',
+  `loan_end_deduct` date DEFAULT NULL,
+  `apply_loan_deduction` int(4) DEFAULT '0',
+  `loan_bank` decimal(24,2) DEFAULT '0.00',
+  `date_loan_bank` date DEFAULT NULL,
+  `loan_deduction_bank` decimal(24,2) DEFAULT '0.00',
+  `loan_start_deduct_bank` date DEFAULT NULL,
+  `loan_end_deduct_bank` date DEFAULT NULL,
+  `apply_loan_deduction_bank` int(4) DEFAULT '0',
+  `other_loan` decimal(24,2) DEFAULT '0.00',
+  `date_other_loan` date DEFAULT NULL,
+  `other_loan_deduction` decimal(24,2) DEFAULT '0.00',
+  `other_loan_description` varchar(255) DEFAULT NULL,
+  `other_loan_start_deduct` date DEFAULT NULL,
+  `other_loan_monthlypayment` int(11) DEFAULT '0',
+  `other_loan_end_deduct` date DEFAULT NULL,
+  `apply_other_loan_deduction` int(4) DEFAULT '0',
+  `purchase` decimal(24,2) DEFAULT '0.00',
+  `purchase_description` varchar(255) DEFAULT NULL,
+  `date_purchase` date DEFAULT NULL,
+  `purchase_deduct` decimal(24,2) DEFAULT '0.00',
+  `purchase_start_deduct` date DEFAULT NULL,
+  `purchase_monthlypayment` int(11) DEFAULT '0',
+  `purchase_end_deduct` date DEFAULT NULL,
+  `apply_purchase_deduct` int(4) DEFAULT '0',
+  `health_insurance` decimal(24,2) DEFAULT '0.00',
+  `statement_balance` decimal(24,2) DEFAULT '0.00',
+  `bank_number` varchar(255) DEFAULT 'N/A',
+  `hiring_duration` decimal(24,2) DEFAULT '0.00',
+  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=338 DEFAULT CHARSET=utf8;
+
+/*Table structure for table `tbl_rate01` */
+
+DROP TABLE IF EXISTS `tbl_rate01`;
+
+CREATE TABLE `tbl_rate01` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid_int` int(11) DEFAULT '0',
+  `userid_varchar` varchar(255) DEFAULT NULL,
+  `employee_name` varchar(255) DEFAULT NULL,
+  `ic` varchar(20) DEFAULT NULL,
+  `Address` varchar(200) DEFAULT NULL,
+  `Phone` varchar(20) DEFAULT NULL,
+  `Email` varchar(50) DEFAULT NULL,
+  `Gender` tinytext,
+  `DOB` date DEFAULT NULL,
+  `hiredate` date DEFAULT NULL,
+  `firedate` date DEFAULT NULL,
+  `inactif` int(5) DEFAULT '0',
+  `building` varchar(255) DEFAULT NULL,
+  `designation` varchar(255) DEFAULT NULL,
+  `dept` varchar(255) DEFAULT NULL,
+  `section` varchar(255) DEFAULT NULL,
+  `photo_name` varchar(255) DEFAULT NULL,
+  `photo_size` varchar(255) DEFAULT NULL,
+  `photo_file` longblob,
+  `imm_ona` varchar(255) DEFAULT NULL,
+  `no_compte` varchar(255) DEFAULT NULL,
+  `type_de_compte` varchar(255) DEFAULT NULL,
+  `payperiod` smallint(5) DEFAULT '1',
+  `probation_period` int(3) DEFAULT '0',
+  `rate_work` decimal(24,2) DEFAULT NULL,
+  `rate_ot` decimal(24,2) DEFAULT NULL,
+  `rate_ot_factor` decimal(24,2) DEFAULT '1.50',
+  `rate_ot_holiday_factor` decimal(24,2) DEFAULT '2.00',
+  `rate_ot_offday_factor` decimal(24,2) DEFAULT '2.00',
+  `rate_ot_restday_factor` decimal(24,2) DEFAULT '2.00',
+  `rate_day` decimal(24,2) DEFAULT '0.00',
+  `rate_fixed` decimal(24,2) DEFAULT '0.00',
+  `rate_restday` decimal(24,2) DEFAULT NULL,
+  `rate_offday` decimal(24,2) DEFAULT NULL,
+  `rate_commission1` decimal(24,2) DEFAULT NULL,
+  `Rate_Prime1` decimal(24,2) DEFAULT NULL,
+  `Rate_Omission1` decimal(24,2) DEFAULT NULL,
+  `rate_assmd` decimal(24,2) DEFAULT '0.00',
+  `rate_cass` decimal(24,2) DEFAULT '0.01',
+  `tax_cass` decimal(24,2) DEFAULT '0.00',
+  `rate_cfgdct` decimal(24,2) DEFAULT '0.01',
+  `tax_cfgdct` decimal(24,2) DEFAULT '0.00',
+  `rate_ona` decimal(24,2) DEFAULT '0.06',
+  `tax_ona` decimal(24,2) DEFAULT '0.00',
+  `rate_fdu` decimal(24,2) DEFAULT '0.01',
+  `tax_fdu` decimal(24,2) DEFAULT '0.00',
+  `rate_iris` decimal(24,2) DEFAULT '0.10',
+  `rate_iric` decimal(24,2) DEFAULT '0.10',
+  `rate_cons` decimal(24,2) DEFAULT '50.00',
+  `day_cons` decimal(24,2) DEFAULT '0.00',
+  `revenu_net` decimal(24,2) DEFAULT '0.00',
+  `incentive` decimal(24,2) DEFAULT '0.00',
+  `incentive_desc` varchar(255) DEFAULT NULL,
+  `incentive_startdate` date DEFAULT NULL,
+  `incentive_enddate` date DEFAULT NULL,
+  `apply_incentive` int(4) DEFAULT '0',
+  `rappel` decimal(24,2) DEFAULT '0.00',
+  `rappel_desc` varchar(255) DEFAULT NULL,
+  `rappel_startdate` date DEFAULT NULL,
+  `rappel_enddate` date DEFAULT NULL,
+  `apply_rappel` int(4) DEFAULT '0',
+  `extra_insurance` decimal(24,2) DEFAULT '0.00',
+  `extra_insdesc` varchar(255) DEFAULT NULL,
+  `apply_extra_ins` int(4) DEFAULT '0',
+  `other_deduct` decimal(24,2) DEFAULT '0.00',
+  `other_deduct_desc` varchar(255) DEFAULT NULL,
+  `loan` decimal(24,2) DEFAULT '0.00',
+  `date_loan` date DEFAULT NULL,
+  `payment` decimal(24,2) DEFAULT '0.00',
+  `date_payment` date DEFAULT NULL,
+  `payment_receipt` varchar(255) DEFAULT NULL,
+  `adjustment` decimal(24,2) DEFAULT '0.00',
+  `date_adjustment` date DEFAULT NULL,
+  `adjustment_receipt` varchar(255) DEFAULT NULL,
+  `loan_deduction` decimal(24,2) DEFAULT '0.00',
+  `loan_description` varchar(255) DEFAULT NULL,
+  `loan_start_deduct` date DEFAULT NULL,
+  `loan_monthlypayment` int(11) DEFAULT '0',
+  `loan_end_deduct` date DEFAULT NULL,
+  `apply_loan_deduction` int(4) DEFAULT '0',
+  `loan_bank` decimal(24,2) DEFAULT '0.00',
+  `date_loan_bank` date DEFAULT NULL,
+  `loan_deduction_bank` decimal(24,2) DEFAULT '0.00',
+  `loan_start_deduct_bank` date DEFAULT NULL,
+  `loan_end_deduct_bank` date DEFAULT NULL,
+  `apply_loan_deduction_bank` int(4) DEFAULT '0',
+  `other_loan` decimal(24,2) DEFAULT '0.00',
+  `date_other_loan` date DEFAULT NULL,
+  `other_loan_deduction` decimal(24,2) DEFAULT '0.00',
+  `other_loan_description` varchar(255) DEFAULT NULL,
+  `other_loan_start_deduct` date DEFAULT NULL,
+  `other_loan_monthlypayment` int(11) DEFAULT '0',
+  `other_loan_end_deduct` date DEFAULT NULL,
+  `apply_other_loan_deduction` int(4) DEFAULT '0',
+  `purchase` decimal(24,2) DEFAULT '0.00',
+  `purchase_description` varchar(255) DEFAULT NULL,
+  `date_purchase` date DEFAULT NULL,
+  `purchase_deduct` decimal(24,2) DEFAULT '0.00',
+  `purchase_start_deduct` date DEFAULT NULL,
+  `purchase_monthlypayment` int(11) DEFAULT '0',
+  `purchase_end_deduct` date DEFAULT NULL,
+  `apply_purchase_deduct` int(4) DEFAULT '0',
+  `health_insurance` decimal(24,2) DEFAULT '0.00',
+  `statement_balance` decimal(24,2) DEFAULT '0.00',
+  `bank_number` varchar(255) DEFAULT 'N/A',
+  `hiring_duration` decimal(24,2) DEFAULT '0.00',
+  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=310 DEFAULT CHARSET=utf8;
+
+/*Table structure for table `tbl_rate_update` */
+
+DROP TABLE IF EXISTS `tbl_rate_update`;
+
+CREATE TABLE `tbl_rate_update` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid_int` int(11) DEFAULT NULL,
+  `other_loan` decimal(24,2) DEFAULT NULL,
+  `date_other_loan` date DEFAULT NULL,
+  `other_loan_description` varchar(255) DEFAULT NULL,
+  `other_loan_deduction` decimal(24,2) DEFAULT NULL,
+  `other_loan_start_deduct` date DEFAULT NULL,
+  `other_loan_monthlypayment` int(11) DEFAULT NULL,
+  `other_loan_end_deduct` date DEFAULT NULL,
+  `apply_other_loan_deduction` int(4) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=256 DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_salary` */
+
+DROP TABLE IF EXISTS `tbl_salary`;
+
+CREATE TABLE `tbl_salary` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid_varchar` varchar(30) DEFAULT NULL,
+  `userid_int` int(11) DEFAULT NULL,
+  `hiredate` date DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `ic` varchar(20) DEFAULT NULL,
+  `dept` varchar(255) DEFAULT NULL,
+  `designation` varchar(255) DEFAULT NULL,
+  `Rate_Work` decimal(24,2) DEFAULT '0.00',
+  `Rate_OT` decimal(24,2) DEFAULT '0.00',
+  `Rate_SALF` decimal(24,2) DEFAULT '0.00',
+  `payperiod` int(10) DEFAULT '1',
+  `probation_period` int(3) DEFAULT '3',
+  `rate_ot_factor` decimal(24,2) DEFAULT '0.00',
+  `rate_ot_holiday_factor` decimal(24,2) DEFAULT '0.00',
+  `rate_ot_restday_factor` decimal(24,2) DEFAULT '0.00',
+  `work_hh_w` decimal(24,2) DEFAULT '0.00',
+  `ot_hh_w` decimal(24,2) DEFAULT '0.00',
+  `work_hh_h` decimal(24,2) DEFAULT '0.00',
+  `ot_hh_h` decimal(24,2) DEFAULT '0.00',
+  `hh_sunday` decimal(24,2) DEFAULT '0.00',
+  `work_hh_r` decimal(24,2) DEFAULT '0.00',
+  `ot_hh_r` decimal(24,2) DEFAULT '0.00',
+  `hh_offday` decimal(24,2) DEFAULT '0.00',
+  `work_hh_o` decimal(24,2) DEFAULT '0.00',
+  `ot_hh_o` decimal(24,2) DEFAULT '0.00',
+  `ot_hh` decimal(24,2) DEFAULT '0.00',
+  `ot_value` decimal(24,2) DEFAULT '0.00',
+  `short_hh` decimal(24,2) DEFAULT '0.00',
+  `short_value` decimal(24,2) DEFAULT '0.00',
+  `absence_hh` decimal(24,2) DEFAULT '0.00',
+  `misspunch_hh` decimal(24,2) DEFAULT '0.00',
+  `sal_work` decimal(24,2) DEFAULT '0.00',
+  `sal_ot` decimal(24,2) DEFAULT '0.00',
+  `sal_sum` decimal(24,2) DEFAULT '0.00',
+  `rate_ona` decimal(24,2) DEFAULT '0.00',
+  `rate_cass` decimal(24,2) DEFAULT '0.00',
+  `rate_cfgdct` decimal(24,2) DEFAULT '0.00',
+  `rate_fdu` decimal(24,2) DEFAULT '0.00',
+  `rate_iris` decimal(24,2) DEFAULT '0.00',
+  `rate_iric` decimal(24,2) DEFAULT '0.00',
+  `tax_ona` decimal(24,2) DEFAULT '0.00',
+  `tax_ona_company` decimal(24,2) DEFAULT '0.00',
+  `tax_ona_cotisation` decimal(24,2) DEFAULT '0.00',
+  `tax_cass` decimal(24,2) DEFAULT '0.00',
+  `tax_cfgdct` decimal(24,2) DEFAULT '0.00',
+  `tax_fdu` decimal(24,2) DEFAULT '0.00',
+  `tax_iris` decimal(24,2) DEFAULT '0.00',
+  `tax_iric` decimal(24,2) DEFAULT '0.00',
+  `tax_sum` decimal(24,2) DEFAULT '0.00',
+  `deduction_pret` decimal(24,2) DEFAULT '0.00',
+  `sal_hr_worked` decimal(24,2) DEFAULT '0.00',
+  `sal_sunday` decimal(24,2) DEFAULT '0.00',
+  `sal_holiday` decimal(24,2) DEFAULT '0.00',
+  `sal_brut_reg` decimal(24,2) DEFAULT '0.00',
+  `sal_suppl` decimal(24,2) DEFAULT '0.00',
+  `sal_holiday_worked_suppl` decimal(24,2) DEFAULT '0.00',
+  `sal_holiday_suppl` decimal(24,2) DEFAULT '0.00',
+  `sal_restday_worked_suppl` decimal(24,2) DEFAULT '0.00',
+  `sal_restday_suppl` decimal(24,2) DEFAULT '0.00',
+  `incentive` decimal(24,2) DEFAULT '0.00',
+  `incentive_desc` varchar(255) DEFAULT NULL,
+  `rappel` decimal(24,2) DEFAULT '0.00',
+  `rappel_desc` varchar(255) DEFAULT NULL,
+  `extra_insurance` decimal(24,2) DEFAULT '0.00',
+  `extra_insdesc` varchar(255) DEFAULT NULL,
+  `day_cons` decimal(24,2) DEFAULT '0.00',
+  `rate_cons` decimal(24,2) DEFAULT '0.00',
+  `loan` decimal(24,2) DEFAULT '0.00',
+  `date_loan` date DEFAULT NULL,
+  `payment` decimal(24,2) DEFAULT '0.00',
+  `date_payment` date DEFAULT NULL,
+  `payment_receipt` varchar(255) DEFAULT NULL,
+  `loan_deduction` decimal(24,2) DEFAULT '0.00',
+  `loan_description` varchar(255) DEFAULT NULL,
+  `loan_deduction_bank` decimal(24,2) DEFAULT '0.00',
+  `other_loan` decimal(24,2) DEFAULT '0.00',
+  `date_other_loan` date DEFAULT NULL,
+  `other_loan_deduction` decimal(24,2) DEFAULT '0.00',
+  `other_loan_description` varchar(255) DEFAULT NULL,
+  `other_loan_start_deduct` date DEFAULT NULL,
+  `other_loan_monthlypayment` int(11) DEFAULT '0',
+  `other_loan_end_deduct` date DEFAULT NULL,
+  `apply_other_loan_deduction` int(4) DEFAULT '0',
+  `dedeuct_cons` decimal(24,2) DEFAULT '0.00',
+  `purchase` decimal(24,2) DEFAULT '0.00',
+  `purchase_description` varchar(255) DEFAULT NULL,
+  `date_purchase` date DEFAULT NULL,
+  `purchase_deduct` decimal(24,2) DEFAULT '0.00',
+  `purchase_start_deduct` date DEFAULT NULL,
+  `purchase_monthlypayment` int(11) DEFAULT '0',
+  `purchase_end_deduct` date DEFAULT NULL,
+  `apply_purchase_deduct` int(4) DEFAULT '0',
+  `health_insurance` decimal(24,2) DEFAULT '0.00',
+  `other_deduct` decimal(24,2) DEFAULT '0.00',
+  `other_deduct_desc` varchar(255) DEFAULT NULL,
+  `total_deduct` decimal(24,2) DEFAULT '0.00',
+  `sal_net` decimal(24,2) DEFAULT '0.00',
+  `bank_number` varchar(255) DEFAULT NULL,
+  `id_batch_payroll` int(11) DEFAULT NULL,
+  `pay_startdate` date DEFAULT NULL,
+  `pay_enddate` date DEFAULT NULL,
+  `hiring_duration` decimal(24,2) DEFAULT '0.00',
+  `generated_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=182 DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_salary_historized` */
+
+DROP TABLE IF EXISTS `tbl_salary_historized`;
+
+CREATE TABLE `tbl_salary_historized` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid_varchar` varchar(30) DEFAULT NULL,
+  `userid_int` int(11) DEFAULT NULL,
+  `hiredate` date DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `ic` varchar(20) DEFAULT NULL,
+  `dept` varchar(255) DEFAULT NULL,
+  `designation` varchar(255) DEFAULT NULL,
+  `Rate_Work` decimal(24,2) DEFAULT '0.00',
+  `Rate_OT` decimal(24,2) DEFAULT '0.00',
+  `Rate_SALF` decimal(24,2) DEFAULT '0.00',
+  `payperiod` int(10) DEFAULT '1',
+  `probation_period` int(3) DEFAULT NULL,
+  `rate_ot_factor` decimal(24,2) DEFAULT '0.00',
+  `rate_ot_holiday_factor` decimal(24,2) DEFAULT '0.00',
+  `rate_ot_restday_factor` decimal(24,2) DEFAULT '0.00',
+  `work_hh_w` decimal(24,2) DEFAULT '0.00',
+  `ot_hh_w` decimal(24,2) DEFAULT '0.00',
+  `work_hh_h` decimal(24,2) DEFAULT '0.00',
+  `ot_hh_h` decimal(24,2) DEFAULT '0.00',
+  `hh_sunday` decimal(24,2) DEFAULT '0.00',
+  `work_hh_r` decimal(24,2) DEFAULT '0.00',
+  `ot_hh_r` decimal(24,2) DEFAULT '0.00',
+  `hh_offday` decimal(24,2) DEFAULT '0.00',
+  `work_hh_o` decimal(24,2) DEFAULT '0.00',
+  `ot_hh_o` decimal(24,2) DEFAULT '0.00',
+  `ot_hh` decimal(24,2) DEFAULT '0.00',
+  `ot_value` decimal(24,2) DEFAULT '0.00',
+  `short_hh` decimal(24,2) DEFAULT '0.00',
+  `short_value` decimal(24,2) DEFAULT '0.00',
+  `absence_hh` decimal(24,2) DEFAULT '0.00',
+  `misspunch_hh` decimal(24,2) DEFAULT '0.00',
+  `sal_work` decimal(24,2) DEFAULT '0.00',
+  `sal_ot` decimal(24,2) DEFAULT '0.00',
+  `sal_sum` decimal(24,2) DEFAULT '0.00',
+  `rate_ona` decimal(24,2) DEFAULT '0.00',
+  `rate_cass` decimal(24,2) DEFAULT '0.00',
+  `rate_cfgdct` decimal(24,2) DEFAULT '0.00',
+  `rate_fdu` decimal(24,2) DEFAULT '0.00',
+  `rate_iris` decimal(24,2) DEFAULT '0.00',
+  `rate_iric` decimal(24,2) DEFAULT '0.00',
+  `tax_ona` decimal(24,2) DEFAULT '0.00',
+  `tax_ona_company` decimal(24,2) DEFAULT '0.00',
+  `tax_ona_cotisation` decimal(24,2) DEFAULT '0.00',
+  `tax_cass` decimal(24,2) DEFAULT '0.00',
+  `tax_cfgdct` decimal(24,2) DEFAULT '0.00',
+  `tax_fdu` decimal(24,2) DEFAULT '0.00',
+  `tax_iris` decimal(24,2) DEFAULT '0.00',
+  `tax_iric` decimal(24,2) DEFAULT '0.00',
+  `tax_sum` decimal(24,2) DEFAULT '0.00',
+  `deduction_pret` decimal(24,2) DEFAULT '0.00',
+  `sal_hr_worked` decimal(24,2) DEFAULT '0.00',
+  `sal_sunday` decimal(24,2) DEFAULT '0.00',
+  `sal_holiday` decimal(24,2) DEFAULT '0.00',
+  `sal_brut_reg` decimal(24,2) DEFAULT '0.00',
+  `sal_suppl` decimal(24,2) DEFAULT '0.00',
+  `sal_holiday_worked_suppl` decimal(24,2) DEFAULT '0.00',
+  `sal_holiday_suppl` decimal(24,2) DEFAULT '0.00',
+  `sal_restday_worked_suppl` decimal(24,2) DEFAULT '0.00',
+  `sal_restday_suppl` decimal(24,2) DEFAULT '0.00',
+  `incentive` decimal(24,2) DEFAULT '0.00',
+  `incentive_desc` varchar(255) DEFAULT NULL,
+  `rappel` decimal(24,2) DEFAULT '0.00',
+  `rappel_desc` varchar(255) DEFAULT NULL,
+  `extra_insurance` decimal(24,0) DEFAULT '0',
+  `extra_insdesc` varchar(255) DEFAULT NULL,
+  `day_cons` decimal(24,2) DEFAULT '0.00',
+  `rate_cons` decimal(24,2) DEFAULT '0.00',
+  `loan` decimal(24,2) DEFAULT '0.00',
+  `date_loan` date DEFAULT NULL,
+  `payment` decimal(24,2) DEFAULT '0.00',
+  `date_payment` date DEFAULT NULL,
+  `payment_receipt` varchar(255) DEFAULT NULL,
+  `adjustment` decimal(24,2) DEFAULT '0.00',
+  `date_adjustment` date DEFAULT NULL,
+  `adjustment_receipt` varchar(255) DEFAULT NULL,
+  `loan_deduction` decimal(24,2) DEFAULT '0.00',
+  `loan_description` varchar(255) DEFAULT NULL,
+  `loan_deduction_bank` decimal(24,2) DEFAULT '0.00',
+  `other_loan` decimal(24,2) DEFAULT '0.00',
+  `date_other_loan` date DEFAULT NULL,
+  `other_loan_deduction` decimal(24,2) DEFAULT '0.00',
+  `other_loan_description` varchar(255) DEFAULT NULL,
+  `other_loan_start_deduct` date DEFAULT NULL,
+  `other_loan_monthlypayment` int(11) DEFAULT '0',
+  `other_loan_end_deduct` date DEFAULT NULL,
+  `apply_other_loan_deduction` int(4) DEFAULT '0',
+  `purchase` decimal(24,2) DEFAULT '0.00',
+  `purchase_description` varchar(255) DEFAULT NULL,
+  `date_purchase` date DEFAULT NULL,
+  `purchase_deduct` decimal(24,2) DEFAULT '0.00',
+  `purchase_start_deduct` date DEFAULT NULL,
+  `purchase_monthlypayment` int(11) DEFAULT '0',
+  `purchase_end_deduct` date DEFAULT NULL,
+  `apply_purchase_deduct` int(4) DEFAULT '0',
+  `dedeuct_cons` decimal(24,2) DEFAULT '0.00',
+  `other_deduct` decimal(24,2) DEFAULT '0.00',
+  `other_deduct_desc` varchar(255) DEFAULT NULL,
+  `health_insurance` decimal(24,2) DEFAULT '0.00',
+  `total_deduct` decimal(24,2) DEFAULT '0.00',
+  `sal_net` decimal(24,2) DEFAULT '0.00',
+  `bank_number` varchar(255) DEFAULT NULL,
+  `id_batch_payroll` int(11) DEFAULT NULL,
+  `pay_startdate` date DEFAULT NULL,
+  `pay_enddate` date DEFAULT NULL,
+  `hiring_duration` decimal(24,2) DEFAULT '0.00',
+  `generated_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4576 DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_salary_historized_temp` */
+
+DROP TABLE IF EXISTS `tbl_salary_historized_temp`;
+
+CREATE TABLE `tbl_salary_historized_temp` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid_varchar` varchar(30) DEFAULT NULL,
+  `userid_int` int(11) DEFAULT NULL,
+  `hiredate` date DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `ic` varchar(20) DEFAULT NULL,
+  `dept` varchar(255) DEFAULT NULL,
+  `designation` varchar(255) DEFAULT NULL,
+  `Rate_Work` decimal(24,2) DEFAULT '0.00',
+  `Rate_OT` decimal(24,2) DEFAULT '0.00',
+  `Rate_SALF` decimal(24,2) DEFAULT '0.00',
+  `payperiod` int(10) DEFAULT '1',
+  `probation_period` int(3) DEFAULT NULL,
+  `rate_ot_factor` decimal(24,2) DEFAULT '0.00',
+  `rate_ot_holiday_factor` decimal(24,2) DEFAULT '0.00',
+  `rate_ot_restday_factor` decimal(24,2) DEFAULT '0.00',
+  `work_hh_w` decimal(24,2) DEFAULT '0.00',
+  `ot_hh_w` decimal(24,2) DEFAULT '0.00',
+  `work_hh_h` decimal(24,2) DEFAULT '0.00',
+  `ot_hh_h` decimal(24,2) DEFAULT '0.00',
+  `hh_sunday` decimal(24,2) DEFAULT '0.00',
+  `work_hh_r` decimal(24,2) DEFAULT '0.00',
+  `ot_hh_r` decimal(24,2) DEFAULT '0.00',
+  `hh_offday` decimal(24,2) DEFAULT '0.00',
+  `work_hh_o` decimal(24,2) DEFAULT '0.00',
+  `ot_hh_o` decimal(24,2) DEFAULT '0.00',
+  `ot_hh` decimal(24,2) DEFAULT '0.00',
+  `ot_value` decimal(24,2) DEFAULT '0.00',
+  `short_hh` decimal(24,2) DEFAULT '0.00',
+  `short_value` decimal(24,2) DEFAULT '0.00',
+  `absence_hh` decimal(24,2) DEFAULT '0.00',
+  `misspunch_hh` decimal(24,2) DEFAULT '0.00',
+  `sal_work` decimal(24,2) DEFAULT '0.00',
+  `sal_ot` decimal(24,2) DEFAULT '0.00',
+  `sal_sum` decimal(24,2) DEFAULT '0.00',
+  `rate_ona` decimal(24,2) DEFAULT '0.00',
+  `rate_cass` decimal(24,2) DEFAULT '0.00',
+  `rate_cfgdct` decimal(24,2) DEFAULT '0.00',
+  `rate_fdu` decimal(24,2) DEFAULT '0.00',
+  `rate_iris` decimal(24,2) DEFAULT '0.00',
+  `rate_iric` decimal(24,2) DEFAULT '0.00',
+  `tax_ona` decimal(24,2) DEFAULT '0.00',
+  `tax_ona_company` decimal(24,2) DEFAULT '0.00',
+  `tax_ona_cotisation` decimal(24,2) DEFAULT '0.00',
+  `tax_cass` decimal(24,2) DEFAULT '0.00',
+  `tax_cfgdct` decimal(24,2) DEFAULT '0.00',
+  `tax_fdu` decimal(24,2) DEFAULT '0.00',
+  `tax_iris` decimal(24,2) DEFAULT '0.00',
+  `tax_iric` decimal(24,2) DEFAULT '0.00',
+  `tax_sum` decimal(24,2) DEFAULT '0.00',
+  `deduction_pret` decimal(24,2) DEFAULT '0.00',
+  `sal_hr_worked` decimal(24,2) DEFAULT '0.00',
+  `sal_sunday` decimal(24,2) DEFAULT '0.00',
+  `sal_holiday` decimal(24,2) DEFAULT '0.00',
+  `sal_brut_reg` decimal(24,2) DEFAULT '0.00',
+  `sal_suppl` decimal(24,2) DEFAULT '0.00',
+  `sal_holiday_worked_suppl` decimal(24,2) DEFAULT '0.00',
+  `sal_holiday_suppl` decimal(24,2) DEFAULT '0.00',
+  `sal_restday_worked_suppl` decimal(24,2) DEFAULT '0.00',
+  `sal_restday_suppl` decimal(24,2) DEFAULT '0.00',
+  `incentive` decimal(24,2) DEFAULT '0.00',
+  `incentive_desc` varchar(255) DEFAULT NULL,
+  `rappel` decimal(24,2) DEFAULT '0.00',
+  `rappel_desc` varchar(255) DEFAULT NULL,
+  `extra_insurance` decimal(24,2) DEFAULT '0.00',
+  `extra_insdesc` varchar(255) DEFAULT NULL,
+  `day_cons` decimal(24,2) DEFAULT '0.00',
+  `rate_cons` decimal(24,2) DEFAULT '0.00',
+  `loan` decimal(24,2) DEFAULT '0.00',
+  `date_loan` date DEFAULT NULL,
+  `payment` decimal(24,2) DEFAULT '0.00',
+  `date_payment` date DEFAULT NULL,
+  `payment_receipt` varchar(255) DEFAULT NULL,
+  `loan_deduction` decimal(24,2) DEFAULT '0.00',
+  `loan_description` varchar(255) DEFAULT NULL,
+  `loan_deduction_bank` decimal(24,2) DEFAULT '0.00',
+  `other_loan` decimal(24,2) DEFAULT '0.00',
+  `date_other_loan` date DEFAULT NULL,
+  `other_loan_deduction` decimal(24,2) DEFAULT '0.00',
+  `other_loan_description` varchar(255) DEFAULT NULL,
+  `other_loan_start_deduct` date DEFAULT NULL,
+  `other_loan_monthlypayment` int(11) DEFAULT '0',
+  `other_loan_end_deduct` date DEFAULT NULL,
+  `apply_other_loan_deduction` int(4) DEFAULT '0',
+  `purchase` decimal(24,2) DEFAULT '0.00',
+  `purchase_description` varchar(255) DEFAULT NULL,
+  `date_purchase` date DEFAULT NULL,
+  `purchase_deduct` decimal(24,2) DEFAULT NULL,
+  `purchase_start_deduct` date DEFAULT NULL,
+  `purchase_monthlypayment` int(11) DEFAULT NULL,
+  `purchase_end_deduct` date DEFAULT NULL,
+  `apply_purchase_deduct` int(4) DEFAULT '0',
+  `dedeuct_cons` decimal(24,2) DEFAULT '0.00',
+  `other_deduct` decimal(24,2) DEFAULT '0.00',
+  `other_deduct_desc` varchar(255) DEFAULT NULL,
+  `health_insurance` decimal(24,2) DEFAULT '0.00',
+  `total_deduct` decimal(24,2) DEFAULT '0.00',
+  `sal_net` decimal(24,2) DEFAULT '0.00',
+  `bank_number` varchar(255) DEFAULT NULL,
+  `id_batch_payroll` int(11) DEFAULT NULL,
+  `pay_startdate` date DEFAULT NULL,
+  `pay_enddate` date DEFAULT NULL,
+  `hiring_duration` decimal(24,2) DEFAULT '0.00',
+  `generated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=185 DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_statement` */
+
+DROP TABLE IF EXISTS `tbl_statement`;
+
+CREATE TABLE `tbl_statement` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid_int` int(11) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `date_transaction` date DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `loan` decimal(24,2) DEFAULT '0.00',
+  `deduction` decimal(24,2) DEFAULT '0.00',
+  `balance` decimal(24,2) DEFAULT '0.00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3394 DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_statement_resume` */
+
+DROP TABLE IF EXISTS `tbl_statement_resume`;
+
+CREATE TABLE `tbl_statement_resume` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid_int` int(11) DEFAULT NULL,
+  `balance` decimal(24,2) DEFAULT '0.00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=161 DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_statement_resume_inactif` */
+
+DROP TABLE IF EXISTS `tbl_statement_resume_inactif`;
+
+CREATE TABLE `tbl_statement_resume_inactif` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid_int` int(11) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `balance` decimal(24,2) DEFAULT '0.00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_sum_absence` */
+
+DROP TABLE IF EXISTS `tbl_sum_absence`;
+
+CREATE TABLE `tbl_sum_absence` (
+  `userid` int(30) DEFAULT NULL,
+  `absence_count` int(24) DEFAULT '0',
+  `hourperday` decimal(24,2) DEFAULT '8.00',
+  `absence_hh` decimal(24,2) DEFAULT '0.00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_sum_misspunch` */
+
+DROP TABLE IF EXISTS `tbl_sum_misspunch`;
+
+CREATE TABLE `tbl_sum_misspunch` (
+  `userid` int(30) DEFAULT NULL,
+  `misspunch_count` int(24) DEFAULT '0',
+  `hourperday` decimal(24,2) DEFAULT '4.00',
+  `misspunch_hh` decimal(24,2) DEFAULT '0.00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_sum_ot` */
+
+DROP TABLE IF EXISTS `tbl_sum_ot`;
+
+CREATE TABLE `tbl_sum_ot` (
+  `userid` int(30) DEFAULT NULL,
+  `ot_hh` decimal(24,2) DEFAULT '0.00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_sum_short` */
+
+DROP TABLE IF EXISTS `tbl_sum_short`;
+
+CREATE TABLE `tbl_sum_short` (
+  `userid` int(30) DEFAULT NULL,
+  `short_hh` decimal(24,2) DEFAULT '0.00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_sum_week1_hday` */
+
+DROP TABLE IF EXISTS `tbl_sum_week1_hday`;
+
+CREATE TABLE `tbl_sum_week1_hday` (
+  `userid` int(30) DEFAULT NULL,
+  `work_hh` decimal(24,2) DEFAULT '0.00',
+  `ot_hh` decimal(24,2) DEFAULT '0.00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_sum_week1_oday` */
+
+DROP TABLE IF EXISTS `tbl_sum_week1_oday`;
+
+CREATE TABLE `tbl_sum_week1_oday` (
+  `userid` int(30) DEFAULT NULL,
+  `work_hh` decimal(24,2) DEFAULT '0.00',
+  `ot_hh` decimal(24,2) DEFAULT '0.00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_sum_week1_rday` */
+
+DROP TABLE IF EXISTS `tbl_sum_week1_rday`;
+
+CREATE TABLE `tbl_sum_week1_rday` (
+  `userid` int(30) DEFAULT NULL,
+  `work_hh` decimal(24,2) DEFAULT '0.00',
+  `ot_hh` decimal(24,2) DEFAULT '0.00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_sum_week1_wday` */
+
+DROP TABLE IF EXISTS `tbl_sum_week1_wday`;
+
+CREATE TABLE `tbl_sum_week1_wday` (
+  `userid` int(30) DEFAULT NULL,
+  `work_hh` decimal(24,2) DEFAULT '0.00',
+  `ot_hh` decimal(24,2) DEFAULT '0.00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_sum_week2_hday` */
+
+DROP TABLE IF EXISTS `tbl_sum_week2_hday`;
+
+CREATE TABLE `tbl_sum_week2_hday` (
+  `userid` int(30) DEFAULT NULL,
+  `work_hh` decimal(24,2) DEFAULT '0.00',
+  `ot_hh` decimal(24,2) DEFAULT '0.00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_sum_week2_oday` */
+
+DROP TABLE IF EXISTS `tbl_sum_week2_oday`;
+
+CREATE TABLE `tbl_sum_week2_oday` (
+  `userid` int(30) DEFAULT NULL,
+  `work_hh` decimal(24,2) DEFAULT '0.00',
+  `ot_hh` decimal(24,2) DEFAULT '0.00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_sum_week2_rday` */
+
+DROP TABLE IF EXISTS `tbl_sum_week2_rday`;
+
+CREATE TABLE `tbl_sum_week2_rday` (
+  `userid` int(30) DEFAULT NULL,
+  `work_hh` decimal(24,2) DEFAULT '0.00',
+  `ot_hh` decimal(24,2) DEFAULT '0.00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_sum_week2_wday` */
+
+DROP TABLE IF EXISTS `tbl_sum_week2_wday`;
+
+CREATE TABLE `tbl_sum_week2_wday` (
+  `userid` int(30) DEFAULT NULL,
+  `work_hh` decimal(24,2) DEFAULT '0.00',
+  `ot_hh` decimal(24,2) DEFAULT '0.00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_sunday_week1` */
+
+DROP TABLE IF EXISTS `tbl_sunday_week1`;
+
+CREATE TABLE `tbl_sunday_week1` (
+  `userid` int(30) NOT NULL,
+  `sunday_hh` decimal(24,2) DEFAULT '0.00',
+  PRIMARY KEY (`userid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_sunday_week2` */
+
+DROP TABLE IF EXISTS `tbl_sunday_week2`;
+
+CREATE TABLE `tbl_sunday_week2` (
+  `userid` int(30) NOT NULL,
+  `sunday_hh` decimal(24,2) DEFAULT '0.00',
+  PRIMARY KEY (`userid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
