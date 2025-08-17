@@ -1,0 +1,1 @@
+import { Link, Outlet } from 'react-router-dom'; const Layout = () => ( <div className='flex'> <aside className='w-64 bg-gray-800 text-white h-screen p-4'> <nav> <ul> <li className='mb-2'><Link to='/'>Home</Link></li> <li><Link to='/employees'>Employees</Link></li> </ul> </nav> </aside> <main className='flex-1 p-4'> <Outlet /> </main> </div> ); export default Layout;
